@@ -231,10 +231,10 @@ generate_new_config() {
     sqm_id_escaped=$(escape_sed_replacement "$sqm_id")
 
     # 使用增强正则表达式和转义
-    sed -i "s|\"telemetry\.machineId\": *\"[^\"]*\"|\"telemetry.machineId\": \"${machine_id_escaped}\"|" "$STORAGE_FILE"
-    sed -i "s|\"telemetry\.macMachineId\": *\"[^\"]*\"|\"telemetry.macMachineId\": \"${mac_machine_id_escaped}\"|" "$STORAGE_FILE"
-    sed -i "s|\"telemetry\.devDeviceId\": *\"[^\"]*\"|\"telemetry.devDeviceId\": \"${device_id_escaped}\"|" "$STORAGE_FILE"
-    sed -i "s|\"telemetry\.sqmId\": *\"[^\"]*\"|\"telemetry.sqmId\": \"${sqm_id_escaped}\"|" "$STORAGE_FILE"
+    sed -i "s#\"telemetry\.machineId\": *\"[^\"]*\"#\"telemetry.machineId\": \"${machine_id_escaped}\"#" "$STORAGE_FILE"
+    sed -i "s#\"telemetry\.macMachineId\": *\"[^\"]*\"#\"telemetry.macMachineId\": \"${mac_machine_id_escaped}\"#" "$STORAGE_FILE"
+    sed -i "s#\"telemetry\.devDeviceId\": *\"[^\"]*\"#\"telemetry.devDeviceId\": \"${device_id_escaped}\"#" "$STORAGE_FILE"
+    sed -i "s#\"telemetry\.sqmId\": *\"[^\"]*\"#\"telemetry.sqmId\": \"${sqm_id_escaped}\"#" "$STORAGE_FILE"
 
     # 设置文件权限和所有者
     chmod 444 "$STORAGE_FILE"  # 改为只读权限
