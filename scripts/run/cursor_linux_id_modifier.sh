@@ -223,12 +223,14 @@ generate_new_config() {
     escape_sed_replacement() {
         echo "$1" | sed -e 's/[\/&|#@]/\\&/g'
     }
-
+        
     # 对变量进行转义处理
     machine_id_escaped=$(escape_sed_replacement "$machine_id")
     mac_machine_id_escaped=$(escape_sed_replacement "$mac_machine_id")
     device_id_escaped=$(escape_sed_replacement "$device_id")
     sqm_id_escaped=$(escape_sed_replacement "$sqm_id")
+
+    echo "$machine_id_escaped"
 
     # 使用增强正则表达式和转义
     sed -i "s#\"telemetry\.machineId\": *\"[^\"]*\"#\"telemetry.machineId\": \"${machine_id_escaped}\"#" "$STORAGE_FILE"
